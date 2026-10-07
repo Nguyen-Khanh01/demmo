@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TQ - Lộ trình học</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-gray-800 relative">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-[#F8F9F8] border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between fade-in-up relative z-50 bg-[#F8F9F8]">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+                <div class="w-10 h-10 rounded-full border border-gray-400 flex items-center justify-center text-xl font-serif">文</div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">TQ</h1>
+                    <p class="text-[10px] text-gray-500">mỗi ngày một chút</p>
+                </div>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+                <a href="index.html" class="nav-item  py-2 hover:text-black transition-colors">Trang chủ</a>
+                <a href="paths.html" class="nav-item active py-2 hover:text-black transition-colors">Lộ trình học</a>
+                <a href="videos.html" class="nav-item  py-2 hover:text-black transition-colors">Khóa học Video</a>
+                <a href="hskk.html" class="nav-item  py-2 hover:text-black transition-colors">Luyện HSKK</a>
+                <a href="tutor.html" class="nav-item  py-2 hover:text-black transition-colors">Gia sư 1:1</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <button onclick="openLogin()" class="flex items-center gap-2 border border-gray-300 bg-white px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-gray-50 transition-colors btn-hover-effect">
+                    <span id="user-status-icon">👤</span> <span id="user-status-text">Đăng nhập</span>
+                </button>
+                
+                <!-- Hamburger Button (Mobile Only) -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-600 hover:text-black focus:outline-none ml-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-200 shadow-lg z-40">
+            <div class="flex flex-col px-4 py-4 space-y-1 text-base font-medium">
+                <a href="index.html" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">Trang chủ</a>
+                <a href="paths.html" class="block px-4 py-3 font-bold text-black bg-gray-50 rounded-lg transition-colors">Lộ trình học</a>
+                <a href="videos.html" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">Khóa học Video</a>
+                <a href="hskk.html" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">Luyện HSKK</a>
+                <a href="tutor.html" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">Gia sư 1:1</a>
+            </div>
+        </div>
+    </header>
+    
+    
+    <main class="max-w-6xl mx-auto px-4 py-12 fade-in-up">
+        <p class="text-xs font-bold tracking-widest text-gray-500 uppercase mb-2">CHỌN ĐIỂM BẮT ĐẦU</p>
+        <h2 class="text-4xl font-bold mb-2 text-[#1B2A24]">Lộ trình vừa với <span class="text-[#D4937B] font-serif italic">mục tiêu của bạn.</span></h2>
+        <p class="text-gray-500 mb-8 text-sm md:text-base">Không cần vội. Chọn một nấc thang, rồi cùng nhau đi thật chắc.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-[#E2F0E5] p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group hover-lift">
+                <div class="absolute right-[-10px] top-10 text-6xl text-black/5 font-serif group-hover:scale-110 transition-transform duration-300">你好</div>
+                <div>
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="font-bold text-sm">HSK 1</span>
+                        <span class="bg-white/50 text-xs px-2 py-1 rounded-full">Bắt đầu từ số 0</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Nền tảng giao tiếp</h3>
+                    <p class="text-xs text-gray-600 mb-8">150 từ vựng cốt lõi · 30 bài học</p>
+                </div>
+                <div class="flex justify-between items-center font-bold relative z-10">
+                    <span>599.000đ<span class="text-xs font-normal text-gray-500">/ khóa</span></span>
+                    <button onclick="buyCourse('Lộ trình HSK 1 - Nền tảng giao tiếp', '599.000đ')" class="text-sm hover:underline flex items-center gap-1 cursor-pointer">Mua ↗</button>
+                </div>
+            </div>
+
+            <div class="bg-[#DFEFF5] p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group hover-lift delay-100 fade-in-up">
+                <div class="absolute right-4 top-10 text-6xl text-black/5 font-serif group-hover:scale-110 transition-transform duration-300">日</div>
+                <div>
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="font-bold text-sm">HSK 2</span>
+                        <span class="bg-white/50 text-xs px-2 py-1 rounded-full">Phổ biến nhất</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Tự tin hàng ngày</h3>
+                    <p class="text-xs text-gray-600 mb-8">300 từ vựng · 36 bài luyện nghe</p>
+                </div>
+                <div class="flex justify-between items-center font-bold relative z-10">
+                    <span>699.000đ<span class="text-xs font-normal text-gray-500">/ khóa</span></span>
+                    <button onclick="buyCourse('Lộ trình HSK 2 - Tự tin hàng ngày', '699.000đ')" class="text-sm hover:underline flex items-center gap-1 cursor-pointer">Mua ↗</button>
+                </div>
+            </div>
+
+            <div class="bg-[#F3D7C5] p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group hover-lift delay-200 fade-in-up">
+                <div class="absolute right-4 top-10 text-6xl text-black/5 font-serif group-hover:scale-110 transition-transform duration-300">行</div>
+                <div>
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="font-bold text-sm">HSK 3</span>
+                        <span class="bg-white/50 text-xs px-2 py-1 rounded-full text-[#D4937B] font-medium">Được yêu thích</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Mở rộng thế giới</h3>
+                    <p class="text-xs text-gray-600 mb-8">600 từ vựng · 48 bài thực hành</p>
+                </div>
+                <div class="flex justify-between items-center font-bold relative z-10">
+                    <span>899.000đ<span class="text-xs font-normal text-gray-500">/ khóa</span></span>
+                    <button onclick="buyCourse('Lộ trình HSK 3 - Mở rộng thế giới', '899.000đ')" class="text-sm hover:underline flex items-center gap-1 cursor-pointer">Mua ↗</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-200 mt-10 bg-white text-xs text-gray-400 py-8 text-center fade-in-up delay-100">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-[10px] font-serif text-black">文</div>
+                <span class="font-semibold text-gray-600">TQ</span>
+            </div>
+            <p>Học để kết nối với thế giới. © 2026 TQ.</p>
+        </div>
+    </footer>
+
+    <!-- POPUP ĐĂNG NHẬP -->
+    <div id="loginModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm px-4">
+        <div class="bg-white p-6 md:p-8 rounded-3xl w-full max-w-sm shadow-2xl relative modal-content">
+            <button onclick="closeModal('loginModal')" class="absolute top-4 right-4 text-gray-400 hover:text-black">✕</button>
+            <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center text-xl font-serif mb-6 mx-auto">文</div>
+            <h3 class="text-2xl font-bold text-center mb-1 text-[#1B2A24]">Chào mừng trở lại.</h3>
+            <p class="text-xs text-center text-gray-500 mb-6">Lưu tiến độ, lịch học và những điều bạn đã hoàn thành.</p>
+            
+            <input type="email" id="loginEmail" placeholder="Email của bạn" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm mb-3 focus:outline-none focus:border-black transition-colors">
+            <input type="password" id="loginPassword" placeholder="Mật khẩu" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm mb-6 focus:outline-none focus:border-black transition-colors">
+            
+            <button onclick="doLogin()" class="w-full bg-[#1B2A24] text-white rounded-lg py-3 font-medium hover:bg-black transition-colors mb-3">Đăng nhập ↗</button>
+            
+            <div class="text-center text-xs text-gray-400 mb-3">hoặc</div>
+            <button onclick="loginWithGoogle()" class="w-full border border-gray-300 text-gray-700 rounded-lg py-3 font-medium hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 mb-4">
+                <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                Tiếp tục với Google
+            </button>
+            
+            <div class="text-center text-sm">
+                <span class="text-gray-500">Chưa có tài khoản?</span>
+                <button onclick="switchToRegister()" class="font-semibold text-black hover:underline">Tạo tài khoản</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP ĐĂNG KÝ -->
+    <div id="registerModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm px-4">
+        <div class="bg-white p-6 md:p-8 rounded-3xl w-full max-w-sm shadow-2xl relative modal-content">
+            <button onclick="closeModal('registerModal')" class="absolute top-4 right-4 text-gray-400 hover:text-black">✕</button>
+            <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center text-xl font-serif mb-6 mx-auto">文</div>
+            <h3 class="text-2xl font-bold text-center mb-1 text-[#1B2A24]">Tạo tài khoản.</h3>
+            <p class="text-xs text-center text-gray-500 mb-6">Bắt đầu hành trình chinh phục tiếng Trung của bạn.</p>
+            
+            <input type="text" id="regName" placeholder="Họ và tên" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm mb-3 focus:outline-none focus:border-black transition-colors">
+            <input type="email" id="regEmail" placeholder="Email của bạn" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm mb-3 focus:outline-none focus:border-black transition-colors">
+            <input type="password" id="regPassword" placeholder="Mật khẩu" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm mb-6 focus:outline-none focus:border-black transition-colors">
+            
+            <button onclick="doRegister()" class="w-full bg-[#1B2A24] text-white rounded-lg py-3 font-medium hover:bg-black transition-colors mb-3">Đăng ký ↗</button>
+            
+            <div class="text-center text-sm">
+                <span class="text-gray-500">Đã có tài khoản?</span>
+                <button onclick="switchToLogin()" class="font-semibold text-black hover:underline">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP CHỌN LỚP VÀ THANH TOÁN -->
+    <div id="checkoutModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm px-4">
+        <div class="bg-white p-6 md:p-8 rounded-3xl w-full max-w-md shadow-2xl relative modal-content">
+            <button onclick="closeModal('checkoutModal')" class="absolute top-4 right-4 text-gray-400 hover:text-black text-lg">✕</button>
+            <h3 class="text-2xl font-bold mb-2 text-[#1B2A24]">Xác nhận đăng ký</h3>
+            <p class="text-sm text-gray-500 mb-6">Bạn đang đăng ký khóa học: <br><strong id="checkoutCourseName" class="text-black text-base"></strong></p>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">1. Chọn lịch học / Khai giảng</label>
+                <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black bg-white transition-colors">
+                    <option>Khai giảng 15/10 - Học Thứ 2,4,6 (19:00 - 21:00)</option>
+                    <option>Khai giảng 20/10 - Học Thứ 3,5,7 (19:30 - 21:30)</option>
+                    <option>Học linh hoạt qua Video (Truy cập ngay)</option>
+                </select>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4 mb-6">
+                <div class="flex justify-between items-center font-bold text-lg">
+                    <span>Tổng thanh toán:</span>
+                    <span id="checkoutPrice" class="text-green-700"></span>
+                </div>
+            </div>
+            
+            <button onclick="processPayment()" class="w-full bg-[#D4937B] text-white rounded-lg py-3 font-medium hover:bg-[#c48168] transition-colors btn-hover-effect">Thanh toán ngay</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
