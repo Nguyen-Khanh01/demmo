@@ -1,9 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     updateLoginStatus();
 });
 
-// Toggle Menu Mobile (Nút 3 gạch)
+// Toggle Menu Mobile
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     if (menu.classList.contains('hidden')) {
@@ -75,7 +74,7 @@ function doLogin() {
 
 function loginWithGoogle() {
     localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('userName', 'Nguyễn Duy Khánh'); 
+    localStorage.setItem('userName', 'Lê Đức Thắng'); 
     updateLoginStatus();
     closeModal('loginModal');
 }
@@ -115,9 +114,8 @@ function processPayment() {
     alert(`Thanh toán thành công khoá học:\n${selectedCourse}\nSố tiền: ${selectedPrice}\nCảm ơn bạn đã tin tưởng TQ!`);
     closeModal('checkoutModal');
 }
-/* ==============================================================
-   TÍNH NĂNG 1: LUYỆN NÓI HSKK (Web Speech API)
-============================================================== */
+
+/* TÍNH NĂNG 1: LUYỆN NÓI HSKK */
 function startSpeaking() {
     const btnText = document.getElementById('btn-speak-text');
     const recordDot = document.getElementById('record-dot');
@@ -125,7 +123,6 @@ function startSpeaking() {
     const userSpoken = document.getElementById('user-spoken-text');
     const feedbackMsg = document.getElementById('feedback-msg');
 
-    // Kiểm tra trình duyệt có hỗ trợ nhận diện giọng nói không
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     
     if (!window.SpeechRecognition) {
@@ -134,13 +131,13 @@ function startSpeaking() {
     }
 
     const recognition = new window.SpeechRecognition();
-    recognition.lang = 'zh-CN'; // Set ngôn ngữ là Tiếng Trung
+    recognition.lang = 'zh-CN';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
     recognition.onstart = function() {
         btnText.innerText = "Đang nghe... Vui lòng nói";
-        recordDot.classList.add('scale-150', 'bg-green-500'); // Đổi màu hiệu ứng khi đang thu âm
+        recordDot.classList.add('scale-150', 'bg-green-500'); 
         recordDot.classList.remove('bg-red-500');
     };
 
@@ -151,14 +148,12 @@ function startSpeaking() {
 
     recognition.onresult = function(event) {
         const transcript = event.results[0][0].transcript;
-        const targetPhrase = "你好中国"; // Câu mục tiêu (bỏ dấu phẩy để dễ so sánh)
-        const cleanTranscript = transcript.replace(/[.,!?，。！？]/g, ""); // Xóa dấu câu khi nói
+        const targetPhrase = "你好中国";
+        const cleanTranscript = transcript.replace(/[.,!?，。！？]/g, "");
 
-        // Hiển thị box kết quả
         resultBox.classList.remove('hidden');
         userSpoken.innerText = transcript;
 
-        // So sánh chuỗi đơn giản
         if (cleanTranscript.includes("你好") || cleanTranscript.includes("中国") || cleanTranscript === targetPhrase) {
             feedbackMsg.innerText = "Tuyệt vời! Phát âm của bạn rất tốt (95/100 điểm).";
             feedbackMsg.className = "text-sm mt-2 font-medium text-green-600";
@@ -167,7 +162,6 @@ function startSpeaking() {
             feedbackMsg.className = "text-sm mt-2 font-medium text-[#D4937B]";
         }
 
-        // Reset nút
         btnText.innerText = "Nhấn để thử lại";
         recordDot.classList.remove('scale-150', 'bg-green-500');
         recordDot.classList.add('bg-red-500');
@@ -183,18 +177,14 @@ function startSpeaking() {
     recognition.start();
 }
 
-
-/* ==============================================================
-   TÍNH NĂNG 2: CÔNG CỤ PHIÊN DỊCH (DEMO DICTIONARY)
-============================================================== */
-let isViToZh = true; // Cờ theo dõi hướng dịch: Mặc định Việt -> Trung
+/* TÍNH NĂNG 2: PHIÊN DỊCH */
+let isViToZh = true; 
 
 function swapLanguage() {
     isViToZh = !isViToZh;
     document.getElementById('lang-from').innerText = isViToZh ? "Việt" : "Trung";
     document.getElementById('lang-to').innerText = isViToZh ? "Trung" : "Việt";
     
-    // Đảo đổi nội dung giữa ô nhập và ô kết quả
     const inputArea = document.getElementById('trans-input');
     const outputArea = document.getElementById('trans-output');
     const temp = inputArea.value;
@@ -215,7 +205,6 @@ function copyTranslation() {
     }
 }
 
-// Từ điển thu nhỏ giả lập API Dịch thuật
 const dictViToZh = {
     "xin chào": "你好",
     "cảm ơn": "谢谢",
@@ -245,19 +234,16 @@ function doTranslate() {
 
     let result = "";
     
-    // So sánh dữ liệu trong từ điển giả lập
     if (isViToZh) {
         result = dictViToZh[input];
     } else {
-        // Nếu là tiếng Trung, xóa khoảng trắng thừa trước khi tra
         const cleanInput = input.replace(/\s+/g, '');
         result = dictZhToVi[cleanInput];
     }
 
-    // Nếu tìm thấy trong từ điển thì in ra, nếu không thì báo lỗi (Vì chưa có API thật)
     if (result) {
         outputBox.value = result;
     } else {
-        outputBox.value = "[Bản Demo] Hệ thống dịch thuật thực tế cần tích hợp Google Translate API hoặc Baidu API. Vui lòng thử các từ khóa: Xin chào, Cảm ơn, Tạm biệt, Trung Quốc.";
+        outputBox.value = "[Bản Demo] Hệ thống thực tế cần tích hợp API (như Google Translate). Vui lòng thử các từ: Xin chào, Cảm ơn, Tạm biệt, Trung Quốc.";
     }
 }
